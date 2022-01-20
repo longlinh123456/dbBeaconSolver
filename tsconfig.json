@@ -1,0 +1,9 @@
+{
+	"extends": "@tsconfig/node14/tsconfig.json",
+	"files": ["index.ts"],
+	"include": ["typings", "includes/beaconDrawer", "includes/systemInfoGetter"],
+	"exclude": ["node_modules"],
+	"compilerOptions": {
+		"noImplicitAny": false
+	}
+}
