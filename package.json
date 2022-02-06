@@ -5,26 +5,30 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node index.js",
-    "test": "tsc && node includes/beaconDrawer/drawer.js",
-    "populateInfo": "tsc && node includes/systemInfoGetter/populator.js"
+    "populateImages": "tsc && node includes/beaconScreenshotter/screenshotterServer.js",
+    "populateInfo": "tsc && node includes/systemInfoDB/populator.js",
+    "populateBeaconInfo": "tsc && node includes/beaconInfoDB/populator.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
+    "@types/cli-progress": "^3.9.2",
     "@types/express": "^4.17.13",
     "@types/lodash": "^4.14.178",
-    "@types/sharp": "^0.29.5",
+    "@types/screenshot-desktop": "^1.12.0",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.5.0"
   },
   "dependencies": {
     "cli-progress": "^3.10.0",
+    "express": "^4.17.2",
+    "jspngopt": "^0.2.0",
+    "lodash": "^4.17.21",
     "opencv4nodejs": "^5.6.0",
     "roblox-xml-parser": "^1.0.1",
-    "screenshot-window-js": "^1.0.0",
-    "sharp": "^0.29.3",
+    "screenshot-desktop": "^1.12.7",
     "typescript": "^4.5.4"
   }
 }
