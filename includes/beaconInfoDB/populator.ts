@@ -3,7 +3,7 @@ import {BeaconInfo} from "../../typings/beaconInfo"
 import _ from "lodash"
 import fs from "fs"
 import {SpectralClass} from "../../typings/systemInfo"
-const beaconInfo: string[][][][][][][][] = []
+const beaconInfo: string[][][][][][][] = []
 function getBeaconSystems(system: string): string[] {
 	const primaryNeighbors = NeighborInfoDB.getNeighbors(system)
 	let secondaryNeighbors: string[] = []
@@ -14,13 +14,12 @@ function getBeaconSystems(system: string): string[] {
 }
 function pushBeaconInfo(system: string, info: BeaconInfo) {
 	beaconInfo[info.A] ??= []
-	beaconInfo[info.A][info.B] ??= []
-	beaconInfo[info.A][info.B][info.F] ??= []
-	beaconInfo[info.A][info.B][info.F][info.G] ??= []
-	beaconInfo[info.A][info.B][info.F][info.G][info.K] ??= []
-	beaconInfo[info.A][info.B][info.F][info.G][info.K][info.M] ??= []
-	beaconInfo[info.A][info.B][info.F][info.G][info.K][info.M][info.N] ??= []
-	beaconInfo[info.A][info.B][info.F][info.G][info.K][info.M][info.N].push(system)
+	beaconInfo[info.A][info.BN] ??= []
+	beaconInfo[info.A][info.BN][info.F] ??= []
+	beaconInfo[info.A][info.BN][info.F][info.G] ??= []
+	beaconInfo[info.A][info.BN][info.F][info.G][info.K] ??= []
+	beaconInfo[info.A][info.BN][info.F][info.G][info.K][info.M] ??= []
+	beaconInfo[info.A][info.BN][info.F][info.G][info.K][info.M].push(system)
 }
 SystemInfoDB.getAllSystems().forEach((system) => {
 	const beaconNeighbors = getBeaconSystems(system)
@@ -36,11 +35,20 @@ SystemInfoDB.getAllSystems().forEach((system) => {
 	beaconNeighbors.forEach((system) => {
 		neighborSpectralClasses[SystemInfoDB.getSpectralClass(system)].push(system as SpectralClass)
 	})
-	const neighborSpectralClassCounts = {} as BeaconInfo
-	for (const spectralClass in neighborSpectralClasses) {
-		neighborSpectralClassCounts[spectralClass] = neighborSpectralClasses[spectralClass].length
+	const neighborSpectralClassCounts: BeaconInfo = {
+		A: 0,
+		BN: 0,
+		F: 0,
+		G: 0,
+		K: 0,
+		M: 0
 	}
-	console.log(neighborSpectralClassCounts)
+	for (const spectralClass in neighborSpectralClasses) {
+		if (spectralClass === "N" || spectralClass === "B") {
+			neighborSpectralClassCounts["BN"] += neighborSpectralClasses[spectralClass].length
+		}
+		else neighborSpectralClassCounts[spectralClass] = neighborSpectralClasses[spectralClass].length
+	}
 	pushBeaconInfo(system, neighborSpectralClassCounts)
 })
 fs.writeFileSync("includes/beaconInfoDB/beaconInfo.json", JSON.stringify(beaconInfo))

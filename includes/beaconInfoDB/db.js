@@ -8,7 +8,7 @@ const fs_1 = __importDefault(require("fs"));
 const beaconInfo = JSON.parse(fs_1.default.readFileSync("./includes/beaconInfoDB/beaconInfo.json").toString());
 class BeaconInfoDB {
     static getSystemsMatchingBeaconInfo(info) {
-        return beaconInfo[info.A][info.B][info.F][info.G][info.K][info.M][info.N];
+        return beaconInfo[info.A][info.BN][info.F][info.G][info.K][info.M];
     }
 }
 exports.BeaconInfoDB = BeaconInfoDB;
