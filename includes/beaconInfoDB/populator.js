@@ -54,7 +54,6 @@ db_1.SystemInfoDB.getAllSystems().forEach((system) => {
         else
             neighborSpectralClassCounts[spectralClass] = neighborSpectralClasses[spectralClass].length;
     }
-    console.log(neighborSpectralClassCounts);
     pushBeaconInfo(system, neighborSpectralClassCounts);
 });
 fs_1.default.writeFileSync("includes/beaconInfoDB/beaconInfo.json", JSON.stringify(beaconInfo));

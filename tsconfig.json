@@ -1,7 +1,6 @@
 {
 	"extends": "@tsconfig/node14/tsconfig.json",
-	"files": ["index.ts"],
-	"include": ["typings", "includes"],
+	"include": ["./", "typings", "includes", "commands"],
 	"exclude": ["node_modules"],
 	"compilerOptions": {
 		"noImplicitAny": false,

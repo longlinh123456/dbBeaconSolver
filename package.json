@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node index.js",
+    "start": "tsc && node -r dotenv/config index.js & node -r dotenv/config keepAlive.js",
     "populateImages": "tsc && node includes/beaconScreenshotter/screenshotterServer.js",
     "populateInfo": "tsc && node includes/systemInfoDB/populator.js",
-    "populateBeaconInfo": "tsc && node includes/beaconInfoDB/populator.js"
+    "populateBeaconInfo": "tsc && node includes/beaconInfoDB/populator.js",
+    "init": "tsc && node includes/systemInfoDB/populator.js && node includes/beaconInfoDB/populator.js && node includes/beaconScreenshotter/screenshotterServer.js",
+    "test": "tsc && node test.js",
+    "deploy": "tsc && node -r dotenv/config deploy-commands.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +25,13 @@
     "eslint": "^8.5.0"
   },
   "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "axios": "^0.25.0",
     "cli-progress": "^3.10.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.5.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "jspngopt": "^0.2.0",
     "lodash": "^4.17.21",
