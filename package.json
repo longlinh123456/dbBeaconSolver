@@ -35,7 +35,6 @@
     "express": "^4.17.2",
     "jspngopt": "^0.2.0",
     "lodash": "^4.17.21",
-    "node": "16.13.2",
     "opencv4nodejs": "^5.6.0",
     "roblox-xml-parser": "^1.0.1",
     "screenshot-desktop": "^1.12.7"
