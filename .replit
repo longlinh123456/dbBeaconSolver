@@ -1,4 +1,4 @@
 run = "npm start"
-
+language = "nix"
 [nix]
 channel = "stable-21_11"
