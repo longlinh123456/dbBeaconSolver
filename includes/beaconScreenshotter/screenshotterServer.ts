@@ -1,6 +1,6 @@
 import screenshot from "screenshot-desktop"
 import express from "express"
-import cv2 from "opencv4nodejs"
+import cv2 from "opencv4nodejs-prebuilt"
 import jspngopt from "jspngopt"
 import fs from "fs"
 import {SystemInfoDB} from "../systemInfoDB/db"

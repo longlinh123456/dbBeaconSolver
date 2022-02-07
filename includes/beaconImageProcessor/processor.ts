@@ -1,4 +1,4 @@
-import cv2, {Mat} from "opencv4nodejs"
+import cv2, {Mat} from "opencv4nodejs-prebuilt"
 import {BeaconInfo} from "../../typings/beaconInfo"
 const BGRSpectralClasses = {
 	BN: new cv2.Vec3(255, 200, 100),
