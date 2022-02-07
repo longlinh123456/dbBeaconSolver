@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const screenshot_desktop_1 = __importDefault(require("screenshot-desktop"));
 const express_1 = __importDefault(require("express"));
-const opencv4nodejs_1 = __importDefault(require("opencv4nodejs"));
+const opencv4nodejs_prebuilt_1 = __importDefault(require("opencv4nodejs-prebuilt"));
 const jspngopt_1 = __importDefault(require("jspngopt"));
 const fs_1 = __importDefault(require("fs"));
 const db_1 = require("../systemInfoDB/db");
@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
         return;
     }
     const sourceImg = await (0, screenshot_desktop_1.default)({ format: "png" });
-    const cropped = opencv4nodejs_1.default.imencode(".png", opencv4nodejs_1.default.imdecode(sourceImg, opencv4nodejs_1.default.IMREAD_UNCHANGED).getRegion(new opencv4nodejs_1.default.Rect(735, 332, 450, 451)));
+    const cropped = opencv4nodejs_prebuilt_1.default.imencode(".png", opencv4nodejs_prebuilt_1.default.imdecode(sourceImg, opencv4nodejs_prebuilt_1.default.IMREAD_UNCHANGED).getRegion(new opencv4nodejs_prebuilt_1.default.Rect(735, 332, 450, 451)));
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     fs_1.default.writeFile(`./beaconImages/${req.query.systemName}.png`, compressor.bufferSync(cropped), () => { });
     bar.increment();

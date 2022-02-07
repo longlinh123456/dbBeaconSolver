@@ -1,6 +1,6 @@
 import {SpectralClassDetector} from "./beaconImageProcessor/processor"
 import {BeaconInfoDB} from "./beaconInfoDB/db"
-import cv2 from "opencv4nodejs"
+import cv2 from "opencv4nodejs-prebuilt"
 import fs from "fs"
 export class Solver {
 	static async solve(beaconImg: Buffer): Promise<string[]> {
