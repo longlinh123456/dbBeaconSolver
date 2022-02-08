@@ -17,8 +17,13 @@ const config_1 = require("./config");
         const imageUrl = message.attachments.first()?.url;
         if (imageUrl) {
             message.channel.send("Received beacon image, solving...");
-            const downloadedImage = Buffer.from((await axios_1.default.get(imageUrl, { responseType: "arraybuffer" })).data);
-            message.channel.send(config_1.config.defaultEmbedMessage(`Matching systems from most likely to least likely:\n${(await (solver_1.Solver.solve(downloadedImage))).join(", ")}`));
+            try {
+                const downloadedImage = Buffer.from((await axios_1.default.get(imageUrl, { responseType: "arraybuffer" })).data);
+                message.channel.send(config_1.config.defaultEmbedMessage(`Matching systems from most likely to least likely:\n${(await (solver_1.Solver.solve(downloadedImage))).join(", ")}`));
+            }
+            catch {
+                message.channel.send({ embeds: [config_1.config.defaultEmbed().setColor("RED").setDescription("Beacon solve failed (probably because you didn't send a beacon)")] });
+            }
         }
     });
     client.login(token);
