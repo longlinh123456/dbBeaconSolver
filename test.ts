@@ -1,12 +1,24 @@
 import fs from "fs"
 import {Solver} from "./includes/solver"
-async function check(beacon: string) {
-	const img = fs.readFileSync(`./beaconImages/${beacon}`)
-	if ((await Solver.solve(img))[0] !== beacon.slice(0, -4)) {
-		console.log(`Result mismatch at system ${beacon.slice(0, -4)}`)
+import cliProgress from "cli-progress"
+(async() => {
+	const beaconNames = fs.readdirSync("./beaconSamples")
+	const bar = new cliProgress.SingleBar({
+		format: "{value} of {total} systems tested {bar} {percentage}%",
+		hideCursor: true
+	}, cliProgress.Presets.shades_classic)
+	bar.start(beaconNames.length, 0)
+	for (const beacon of beaconNames) {
+		try {
+			const img = fs.readFileSync(`./beaconSamples/${beacon}`)
+			if ((await Solver.solve(img))[0] !== beacon.slice(0, -4)) {
+				console.log(`\nResult mismatch at system ${beacon.slice(0, -4)}`)
+			}
+			bar.increment()
+		}
+		catch {
+			console.log(`Error at system ${beacon.slice(0, -4)}`)
+		}
 	}
-}
-const beaconNames = fs.readdirSync("./beaconImages")
-for (const beacon of beaconNames) {
-	check(beacon)
-}
+	bar.stop()
+})()

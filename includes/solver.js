@@ -11,7 +11,7 @@ const fs_1 = __importDefault(require("fs"));
 class Solver {
     static async solve(beaconImg) {
         const img = opencv4nodejs_prebuilt_1.default.imdecode(beaconImg);
-        const detectedBeaconInfo = processor_1.SpectralClassDetector.detect(img);
+        const detectedBeaconInfo = processor_1.BeaconProcessor.detectSpectralClassSignature(img);
         const potentialMatchingSystems = db_1.BeaconInfoDB.getSystemsMatchingBeaconInfo(detectedBeaconInfo);
         if (potentialMatchingSystems.length <= 1)
             return potentialMatchingSystems;

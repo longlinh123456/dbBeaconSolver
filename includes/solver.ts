@@ -1,11 +1,11 @@
-import {SpectralClassDetector} from "./beaconImageProcessor/processor"
+import {BeaconProcessor} from "./beaconImageProcessor/processor"
 import {BeaconInfoDB} from "./beaconInfoDB/db"
 import cv2 from "opencv4nodejs-prebuilt"
 import fs from "fs"
 export class Solver {
 	static async solve(beaconImg: Buffer): Promise<string[]> {
 		const img = cv2.imdecode(beaconImg)
-		const detectedBeaconInfo = SpectralClassDetector.detect(img)
+		const detectedBeaconInfo = BeaconProcessor.detectSpectralClassSignature(img)
 		const potentialMatchingSystems = BeaconInfoDB.getSystemsMatchingBeaconInfo(detectedBeaconInfo)
 		if (potentialMatchingSystems.length <= 1) return potentialMatchingSystems
 		else {
