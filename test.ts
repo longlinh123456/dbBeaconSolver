@@ -17,7 +17,7 @@ import cliProgress from "cli-progress"
 			bar.increment()
 		}
 		catch {
-			console.log(`Error at system ${beacon.slice(0, -4)}`)
+			console.log(`\nError at system ${beacon.slice(0, -4)}`)
 		}
 	}
 	bar.stop()

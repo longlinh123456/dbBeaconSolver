@@ -8,7 +8,7 @@ const BGRSpectralClasses = {
 	K: new cv2.Vec3(80, 165, 255),
 	M: new cv2.Vec3(60, 80, 255),
 }
-const leniencyVector = new cv2.Vec3(10, 10, 10)
+const leniencyVector = new cv2.Vec3(17, 17, 12)
 export class BeaconProcessor {
 	static detectSpectralClassSignature(img: Mat): BeaconInfo {
 		const filteredImgs: Record<string, Mat> = {}
@@ -24,7 +24,7 @@ export class BeaconProcessor {
 			filteredImgs[spectralClass] = img.bitwiseAnd(img.inRange(BGRSpectralClasses[spectralClass].sub(leniencyVector), BGRSpectralClasses[spectralClass].add(leniencyVector)).cvtColor(cv2.COLOR_GRAY2BGR))
 		}
 		for (const spectralClass in filteredImgs) {
-			spectralClassCounts[spectralClass] = filteredImgs[spectralClass].cvtColor(cv2.COLOR_BGR2GRAY).threshold(15, 255, cv2.THRESH_BINARY).findContours(cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE).length
+			spectralClassCounts[spectralClass] = filteredImgs[spectralClass].cvtColor(cv2.COLOR_BGR2GRAY).threshold(25, 255, cv2.THRESH_BINARY).findContours(cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE).length
 		}
 		return spectralClassCounts
 	}

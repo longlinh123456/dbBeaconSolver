@@ -13,7 +13,7 @@ const BGRSpectralClasses = {
     K: new opencv4nodejs_prebuilt_1.default.Vec3(80, 165, 255),
     M: new opencv4nodejs_prebuilt_1.default.Vec3(60, 80, 255),
 };
-const leniencyVector = new opencv4nodejs_prebuilt_1.default.Vec3(10, 10, 10);
+const leniencyVector = new opencv4nodejs_prebuilt_1.default.Vec3(17, 17, 12);
 class BeaconProcessor {
     static detectSpectralClassSignature(img) {
         const filteredImgs = {};
@@ -29,7 +29,7 @@ class BeaconProcessor {
             filteredImgs[spectralClass] = img.bitwiseAnd(img.inRange(BGRSpectralClasses[spectralClass].sub(leniencyVector), BGRSpectralClasses[spectralClass].add(leniencyVector)).cvtColor(opencv4nodejs_prebuilt_1.default.COLOR_GRAY2BGR));
         }
         for (const spectralClass in filteredImgs) {
-            spectralClassCounts[spectralClass] = filteredImgs[spectralClass].cvtColor(opencv4nodejs_prebuilt_1.default.COLOR_BGR2GRAY).threshold(15, 255, opencv4nodejs_prebuilt_1.default.THRESH_BINARY).findContours(opencv4nodejs_prebuilt_1.default.RETR_TREE, opencv4nodejs_prebuilt_1.default.CHAIN_APPROX_SIMPLE).length;
+            spectralClassCounts[spectralClass] = filteredImgs[spectralClass].cvtColor(opencv4nodejs_prebuilt_1.default.COLOR_BGR2GRAY).threshold(25, 255, opencv4nodejs_prebuilt_1.default.THRESH_BINARY).findContours(opencv4nodejs_prebuilt_1.default.RETR_TREE, opencv4nodejs_prebuilt_1.default.CHAIN_APPROX_SIMPLE).length;
         }
         return spectralClassCounts;
     }

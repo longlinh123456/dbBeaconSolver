@@ -22,7 +22,8 @@ const cli_progress_1 = __importDefault(require("cli-progress"));
             bar.increment();
         }
         catch {
-            console.log(`Error at system ${beacon.slice(0, -4)}`);
+            console.log(`\nError at system ${beacon.slice(0, -4)}`);
         }
     }
+    bar.stop();
 })();
