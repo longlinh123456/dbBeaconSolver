@@ -8,7 +8,7 @@
     "populateImages": "tsc && node src/beaconScreenshotter/screenshotterServer.js",
     "populateInfo": "tsc && node src/systemInfoDB/populator.js",
     "populateBeaconInfo": "tsc && node src/beaconInfoDB/populator.js",
-    "init": "tsc && node src/systemInfoDB/populator.js && node src/beaconInfoDB/populator.js && node src/beaconScreenshotter/screenshotterServer.js",
+    "init": "tsc && node src/systemInfoDB/populator.js && node src/beaconInfoDB/populator.js && node src/beaconScreenshotter/screenshotterServer.js"
   },
   "author": "",
   "license": "ISC",
