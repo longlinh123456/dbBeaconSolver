@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const discord_js_1 = require("discord.js");
 exports.config = {
-    guildId: "891337964943183912",
-    clientId: "891331514376282122",
+    guildId: "891337964943183912", // guild where the bot is in
+    clientId: "891331514376282122", // client token
     defaultEmbed() {
-        return new discord_js_1.MessageEmbed()
-            .setColor("BLUE")
+        return new discord_js_1.EmbedBuilder()
+            .setColor(discord_js_1.Colors.Blue)
             .setAuthor({ name: "Starscape Beacon Solver", iconURL: "https://i.imgur.com/vNUqpKcl.png" })
             .setTimestamp()
             .setThumbnail("https://i.imgur.com/vNUqpKcl.png")

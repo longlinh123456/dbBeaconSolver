@@ -1,11 +1,11 @@
-import {MessageEmbed} from "discord.js"
+import {Colors, EmbedBuilder} from "discord.js"
 
 export const config = {
 	guildId: "891337964943183912", // guild where the bot is in
 	clientId: "891331514376282122", // client token
 	defaultEmbed() {
-		return new MessageEmbed()
-			.setColor("BLUE")
+		return new EmbedBuilder()
+			.setColor(Colors.Blue)
 			.setAuthor({name: "Starscape Beacon Solver", iconURL: "https://i.imgur.com/vNUqpKcl.png"})
 			.setTimestamp()
 			.setThumbnail("https://i.imgur.com/vNUqpKcl.png")

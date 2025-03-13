@@ -1,7 +1,14 @@
 {
-	"extends": "@tsconfig/node14/tsconfig.json",
-	"include": ["./", "typings", "includes", "commands"],
-	"exclude": ["node_modules"],
+	"extends": "@tsconfig/node22/tsconfig.json",
+	"include": [
+		"./",
+		"typings",
+		"src",
+		"commands"
+	],
+	"exclude": [
+		"node_modules"
+	],
 	"compilerOptions": {
 		"noImplicitAny": false,
 		"resolveJsonModule": true
