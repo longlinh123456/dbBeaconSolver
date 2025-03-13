@@ -31,8 +31,7 @@ app.get("/", async(req, res) => {
 	bar.increment()
 	if (nextSystem) {
 		res.send(nextSystem)
-	}
-	else {
+	} else {
 		res.send("END")
 		bar.stop()
 		process.exit()

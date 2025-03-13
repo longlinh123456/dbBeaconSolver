@@ -18,8 +18,7 @@ import {config} from "./config"
 			try {
 				const downloadedImage = Buffer.from((await axios.get(imageUrl, {responseType: "arraybuffer"})).data as ArrayBuffer)
 				message.channel.send(config.defaultEmbedMessage(`Matching systems from most likely to least likely:\n${(await (Solver.solve(downloadedImage))).join(", ")}`))
-			}
-			catch {
+			} catch {
 				message.channel.send({embeds: [config.defaultEmbed().setColor("RED").setDescription("Beacon solve failed (probably because you didn't send a beacon)")]})
 			}
 		}

@@ -46,8 +46,7 @@ SystemInfoDB.getAllSystems().forEach((system) => {
 	for (const spectralClass in neighborSpectralClasses) {
 		if (spectralClass === "N" || spectralClass === "B") {
 			neighborSpectralClassCounts["BN"] += neighborSpectralClasses[spectralClass].length
-		}
-		else neighborSpectralClassCounts[spectralClass] = neighborSpectralClasses[spectralClass].length
+		} else neighborSpectralClassCounts[spectralClass] = neighborSpectralClasses[spectralClass].length
 	}
 	pushBeaconInfo(system, neighborSpectralClassCounts)
 })

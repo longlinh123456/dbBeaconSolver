@@ -18,6 +18,5 @@ const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith("
 		rest.put(Routes.applicationCommands(config.clientId), {body: commands})
 			.then(() => console.log("Successfully registered application commands."))
 			.catch(console.error)
-	}
-	else throw new Error("TOKEN environmental variable is not defined.")
+	} else throw new Error("TOKEN environmental variable is not defined.")
 })()
