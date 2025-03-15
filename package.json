@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node -r dotenv/config index.js & node -r dotenv/config keepAlive.js",
+    "start": "tsc && node -r dotenv/config index.js",
     "populateImages": "tsc && node src/beaconScreenshotter/screenshotterServer.js",
     "populateInfo": "tsc && node src/systemInfoDB/populator.js",
     "populateBeaconInfo": "tsc && node src/beaconInfoDB/populator.js",
